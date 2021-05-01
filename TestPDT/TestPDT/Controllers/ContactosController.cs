@@ -21,7 +21,6 @@ namespace TestPDT.Controllers
         {
             this._context = context;
         }
-
         
         /// <summary>
         /// Regresa una lista de contactos
@@ -31,6 +30,12 @@ namespace TestPDT.Controllers
         public async Task<ActionResult<IEnumerable<Contacto>>> GetContactos()
         {
             return await _context.Contactos.ToListAsync();
+        }
+
+        [HttpGet("Busca/{criterio}")]
+        public async Task<ActionResult<IEnumerable<Contacto>>> GetBuscaContactos(string criterio)
+        {
+            return await _context.Contactos.Where( c=> c.Nombre.Contains(criterio)).ToListAsync();
         }
 
         /// <summary>
@@ -91,6 +96,7 @@ namespace TestPDT.Controllers
         [HttpPost]
         public async Task<ActionResult<Contacto>> PostContacto(Contacto contacto)
         {
+            contacto.FechaRegistro = DateTime.Now;
             _context.Contactos.Add(contacto);
             await _context.SaveChangesAsync();
 

@@ -1,4 +1,49 @@
 <header>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img alt="" src="assets/IronM.jpg"
+             class="img-responsive" height="40" width="132">
+
+      </a>
+      <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarid"
+           [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/']">Lista de contactos </a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link text-dark"  [routerLink]="['/nuevocontacto']">Nuevo contacto</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link text-dark"  [routerLink]="['/info']">Información</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <style>
+    nav ul li:hover {
+      background-color:darkgray;
+    }
+/*    .table-striped > tbody > tr:nth-child(odd) > td {
+      background-color: dimgrey;
+      color: white;
+    }*/
+  </style>
+</header>
+<!--<header>
   <nav
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
@@ -41,4 +86,4 @@
       </div>
     </div>
   </nav>
-</header>
+</header>-->

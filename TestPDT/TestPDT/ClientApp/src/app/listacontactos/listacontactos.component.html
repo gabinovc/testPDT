@@ -1,0 +1,45 @@
+<!--<p>listacontactos works!</p>-->
+<div class="containerr-fluid">
+  <div class="row">
+    <div class="col-md-1">
+      <label class="control-label">Buscar</label>
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="criterio" [(ngModel)]="criterio" class="form-control"/>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary btn-sm" (click)="buscacontactos()">Buscar</button>
+    </div>
+    <div class="col-md-2">
+      <input type="file" class="form-control" value="Archivo csv" />
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Teléfono</th>
+        <th>CURP</th>
+        <th>Fecha registro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contacto of listcontactos">
+        <td>{{contacto.id}}</td>
+        <td>{{contacto.nombre}}</td>
+        <td>{{contacto.direccion}}</td>
+        <td>{{contacto.telefono}}</td>
+        <td>{{contacto.curp}}</td>
+        <td>{{contacto.fechaRegistro}}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" [routerLink]='["/editcontacto/" + contacto.id]'>Editar</button>
+        </td>
+        <td>
+          <input class="btn btn-danger btn-sm" type="button" (click)="deletecontacto(contacto)" value="Borrar"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
