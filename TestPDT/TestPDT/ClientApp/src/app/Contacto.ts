@@ -1,6 +1,6 @@
 export class Contacto {
   public id: number;
-  public fechaRegistro: Date;
+  public fechaRegistro: string;
   public nombre: string;
   public direccion: string;
   public telefono: string;

@@ -66,7 +66,12 @@ namespace TestPDT.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(contacto).State = EntityState.Modified;
+            var contactoupdate = await _context.Contactos.FindAsync(id);
+
+            contactoupdate.Nombre = contacto.Nombre;
+            contactoupdate.Direccion = contacto.Direccion;
+            contactoupdate.Telefono = contacto.Telefono;
+            contactoupdate.Curp = contacto.Curp;
 
             try
             {

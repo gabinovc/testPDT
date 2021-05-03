@@ -42,7 +42,7 @@
         <td>{{contacto.direccion}}</td>
         <td>{{contacto.telefono}}</td>
         <td>{{contacto.curp}}</td>
-        <td>{{contacto.fechaRegistro}}</td>
+        <td>{{contacto.fechaRegistro | date}}</td>
         <td>
           <button class="btn btn-primary btn-sm" [routerLink]='["/editcontacto/" + contacto.id]'>Editar</button>
         </td>

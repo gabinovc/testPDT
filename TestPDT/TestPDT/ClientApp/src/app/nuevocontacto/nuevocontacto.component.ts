@@ -39,7 +39,7 @@ export class NuevocontactoComponent implements OnInit {
       direccion: '',
       telefono: '',
       curp: '',
-      fechaRegistro: null
+      fechaRegistro: this.datePipe.transform(this.myDate, 'dd-MM-yyyy')
     });
 
     this.activatedRoute.params.subscribe(params => {
@@ -78,17 +78,18 @@ export class NuevocontactoComponent implements OnInit {
     this.ignorarExistenCambiosPendientes = true;
 
     let contactodatos: Contacto = Object.assign({}, this.formGroup.value);
-
     console.table(contactodatos);
 
     if (this.modoEdicion) {
       //actualizar con los datos modificados
       contactodatos.id = this.contactoId;
+      contactodatos.fechaRegistro = null;
       this.contactoserv.updateContacto(contactodatos)
         .subscribe(c => this.router.navigate(["/"])),
         error => console.error(error)
     }
     else {
+      contactodatos.fechaRegistro = null;
       this.contactoserv.addContacto(contactodatos)
         .subscribe(c =>
           this.router.navigateByUrl('/'),

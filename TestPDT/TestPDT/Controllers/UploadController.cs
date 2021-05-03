@@ -90,7 +90,7 @@ namespace TestPDT.Controllers
             string[] values = csvLine.Split(',');
             Contacto contactoValues = new Contacto();
             contactoValues.Id = 0;
-            contactoValues.FechaRegistro = Convert.ToDateTime(values[1]);
+            contactoValues.FechaRegistro =Convert.ToDateTime(values[1]);
             contactoValues.Nombre = values[2];
             contactoValues.Direccion = values[3];
             contactoValues.Telefono = values[4];
