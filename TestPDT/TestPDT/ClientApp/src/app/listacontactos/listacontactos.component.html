@@ -4,14 +4,23 @@
     <div class="col-md-1">
       <label class="control-label">Buscar</label>
     </div>
-    <div class="col-md-6">
-      <input type="text" name="criterio" [(ngModel)]="criterio" class="form-control"/>
+    <div class="col-md-5">
+      <input type="text" name="criterio" [(ngModel)]="criterio" class="form-control" />
     </div>
     <div class="col-md-2">
       <button class="btn btn-primary btn-sm" (click)="buscacontactos()">Buscar</button>
     </div>
     <div class="col-md-2">
-      <input type="file" class="form-control" value="Archivo csv" />
+      <input type="file" #file placeholder="Archivo" (change)="uploadFile(file.files)" style="display:none;">
+      <button type="button" class="btn btn-success" (click)="file.click()">Exportar (*.csv)</button>
+    </div>
+    <div class="col-md-2">
+      <span class="upload" *ngIf="progress > 0">
+        {{progress}}%
+      </span>
+      <span class="upload" *ngIf="message">
+        {{message}}
+      </span>
     </div>
   </div>
 
